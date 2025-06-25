@@ -2,22 +2,22 @@
 
 TASK_FILE = "tasks.txt"
 
-# Load tasks from file
 def load_tasks():
+
     try:
         with open(TASK_FILE, "r") as file:
             return [line.strip() for line in file.readlines()]
     except FileNotFoundError:
         return []
 
-# Save tasks to file
 def save_tasks(tasks):
+
     with open(TASK_FILE, "w") as file:
         for task in tasks:
             file.write(task + "\n")
 
-# Display all tasks
 def view_tasks(tasks):
+
     if not tasks:
         print("\nNo tasks in the list.\n")
     else:
@@ -26,8 +26,8 @@ def view_tasks(tasks):
             print(f"{i}. {task}")
         print()
 
-# Add a new task
 def add_task(tasks):
+
     task = input("Enter the task: ").strip()
     if task:
         tasks.append(task)
@@ -36,8 +36,8 @@ def add_task(tasks):
     else:
         print("Cannot add an empty task.\n")
 
-# Remove a task
 def remove_task(tasks):
+
     view_tasks(tasks)
     try:
         index = int(input("Enter the task number to remove: "))
@@ -50,8 +50,8 @@ def remove_task(tasks):
     except ValueError:
         print("Please enter a valid number.\n")
 
-# Main loop
 def main():
+
     tasks = load_tasks()
     while True:
         print("To-Do List Menu:")
